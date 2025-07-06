@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To Trisha, With Love</title>
+  <style>
+    body {
+      background-color: #fdf6e3;
+      font-family: 'Georgia', serif;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .book {
+      width: 90%;
+      max-width: 600px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    .page {
+      padding: 2em;
+      display: none;
+    }
+    .page.active {
+      display: block;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .cover {
+      text-align: center;
+    }
+    button {
+      margin-top: 2em;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #f2d3d3;
+      border: none;
+      cursor: pointer;
+    }
+    .secret-trigger {
+      cursor: pointer;
+      font-size: 1.5em;
+      float: right;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="book">
+    <div class="page cover active">
+      <h1>To Trisha, With Love</h1>
+      <p class="subtitle">A story written in whispers, glances, and memories.</p>
+      <button onclick="nextPage()">Begin</button>
+    </div>
+
+    <div class="page">
+      <h2>Dedication</h2>
+      <p>"For the girl who made finger hearts magical and van rides unforgettable."<br>– Manesh</p>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <div class="page">
+      <h2>Chapter 1: The First Conversation</h2>
+      <p>Every chapter of our story is engraved in my heart—from that first conversation about Vishu money to every secret glance, shy smile, and whispered "I love you" in vans and combine classes.<br><br>
+      I still remember how you blushed when I told you that you looked like a Disney princess. And I remember the pink cardigan, the marshmallows, the finger hearts, the van signs, and your handmade gifts.<br><br>
+      Every little moment with you—no matter how small—was magic to me.</p>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <div class="page">
+      <h2>Chapter 2: The Chaos & The Calm</h2>
+      <p>I know we’ve had our ups and downs. The happy silences. The school trips. The sneaky peeks. The fake breakups that still left real tears.<br><br>
+      But I’d live through every single one of them again just to feel your warmth, your presence, your love once more.</p>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <div class="page">
+      <h2>Chapter 3: My Safe Space</h2>
+      <p>You’ve always been my everything—my password, my comfort, my safe space.<br><br>
+      Even when you drifted, even when it hurt, I held on. Because deep inside, I knew what we had was real.<br><br>
+      You once said you'd give me a chance, and I’m still holding onto that promise—not out of desperation, but out of faith.<br>
+      I believe in us. I believe in the Trisha I fell in love with.</p>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <div class="page">
+      <h2>Chapter 4: If I Ever Get To Marry You</h2>
+      <p>If I ever get to marry you one day, I’ll love you the way you deserve.<br><br>
+      I’ll be your peace after a storm, your laughter after a long day, your home when the world feels too much.<br><br>
+      I’ll never raise my voice, never let you feel alone.<br>
+      I’ll be there—for every tear, every hug, every tired moment.</p>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <div class="page">
+      <h2>Chapter 5: The Comfort Movie</h2>
+      <p>You once said the hero in <i>Mudhal Nee Mudivum Nee</i> reminded you of me.<br><br>
+      That comfort movie now plays like a memory of us.<br><br>
+      Just like that hero, I’ll wait—no matter how long—because love isn’t about rushing. It’s about holding on, even when it hurts.<br><br>
+      <span class="secret-trigger" onclick="revealSecret()">💗</span>
+      </p>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <div class="page secret" id="secret-page">
+      <h2>Chapter 6: My Trisha</h2>
+      <p>I miss my old Trisha.<br>
+      The one who called me <i>vennamavaney.</i><br>
+      The one who held my hand in the van.<br>
+      The one who blushed when I said she looked beautiful.<br><br>
+      But most of all, I just miss <b>you</b>.<br><br>
+      I love you, Trisha.<br>
+      Always have.<br>
+      Always will.<br><br>
+      – Manesh ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.page');
+
+    function showPage(index) {
+      pages.forEach(p => p.classList.remove('active'));
+      if (pages[index]) pages[index].classList.add('active');
+    }
+
+    function nextPage() {
+      if (currentPage < pages.length - 2) { // exclude secret page from normal nav
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+
+    function revealSecret() {
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById('secret-page').classList.add('active');
+    }
+
+    showPage(currentPage);
+  </script>
+</body>
+</html>
